@@ -5,9 +5,27 @@ Dokumentasi latihan praktis fondasi Linux, Networking, dan deployment Nginx Web 
 
 ---
 
-## 🏗️ Architecture / Flow
-`User (Browser)` ➔ `Internet (Port 80 / 5000)` ➔ `AWS Security Group` ➔ `EC2 Instance (Ubuntu)` ➔ `Nginx / Python App`
+## 🏗️ Architecture Overview
 
+```text
+[ User / Browser ]
+        │
+        ▼  (HTTP / Port 5000)
+┌────────────────────────────────────────────────────────┐
+│ AWS Cloud (us-east-1)                                  │
+│                                                        │
+│   ┌────────────────────────────────────────────────┐   │
+│   │ AWS Security Group (Inbound Rule: Port 5000)   │   │
+│   └──────────────────────┬─────────────────────────┘   │
+│                          │                             │
+│                          ▼                             │
+│   ┌────────────────────────────────────────────────┐   │
+│   │ EC2 Instance (Ubuntu 24.04 LTS)                │   │
+│   │                                                │   │
+│   │   ├── Git & GitHub Integration                 │   │
+│   │   └── Python 3 + Flask Web App (Port 5000)     │   │
+│   └────────────────────────────────────────────────┘   │
+└────────────────────────────────────────────────────────┘
 ---
 
 ## 🚀 Steps & Execution
